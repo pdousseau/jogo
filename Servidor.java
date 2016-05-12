@@ -12,7 +12,10 @@ public class Servidor{
 	Jogo jogo;
 	ArrayList<Integer> b;
 	ArrayList<Integer> baralho;
-
+	String devolucao = "Devolucao";
+	String compra = "Compra";
+	String cartas = "Cartas";
+	String verificaVencedor = "VerificaVencedor";
 	
 	public Servidor(){
 		
@@ -99,7 +102,7 @@ public class Servidor{
 				msg4 = (String)recebe4.readObject();
 				
 				//caso seja uma compra de carta
-				if (msg1.equals("Compra")){
+				if (msg1.equals(compra)){
 					
 					System.out.println("SERVER - COMPRA");
 					
@@ -118,7 +121,7 @@ public class Servidor{
 					envia1.writeObject(carta);
 					envia1.flush();
 					
-				}else if(msg1.equals("Devolucao")){
+				}else if(msg1.equals(devolucao)){
 					
 					System.out.println("SERVER - DEVOLUCAO");
 					
@@ -133,7 +136,7 @@ public class Servidor{
 					case 4: m4.colocar(carta); break;
 					}
 					
-				}else if(msg1.equals("VerificaVencedor")){
+				}else if(msg1.equals(verificaVencedor)){
 					
 					System.out.println("SERVER - VERIFICACAO");
 					
@@ -148,7 +151,7 @@ public class Servidor{
 					envia1.writeObject(venceu1);
 					envia1.flush();
 				
-			    }else if(msg1.equals("Cartas")){
+			    }else if(msg1.equals(cartas)){
 			    	
 			    	System.out.println("SERVER - DANDO AS CARTAS");
 			    	
@@ -168,7 +171,7 @@ public class Servidor{
 				}
 				//=========================DOIS================================
 				//caso seja uma compra de carta
-				if (msg2.equals("Compra")){
+				if (msg2.equals(compra)){
 					
 					System.out.println("SERVER - COMPRA");
 					
@@ -187,7 +190,7 @@ public class Servidor{
 					envia2.writeObject(carta);
 					envia2.flush();
 					
-				}else if(msg2.equals("Devolucao")){
+				}else if(msg2.equals(devolucao)){
 					
 					System.out.println("SERVER - DEVOLUCAO");
 					
@@ -202,7 +205,7 @@ public class Servidor{
 					case 4: m4.colocar(carta); break;
 					}
 					
-				}else if(msg2.equals("VerificaVencedor")){
+				}else if(msg2.equals(verificaVencedor)){
 					
 					System.out.println("SERVER - VERIFICACAO");
 					
@@ -217,7 +220,7 @@ public class Servidor{
 					envia2.writeObject(venceu2);
 					envia2.flush();
 				
-			    }else if(msg2.equals("Cartas")){
+			    }else if(msg2.equals(cartas)){
 			    	
 			    	System.out.println("SERVER - DANDO AS CARTAS");
 			    	
@@ -237,7 +240,7 @@ public class Servidor{
 				}
 				//===========================TRES==============================
 				//caso seja uma compra de carta
-				if (msg3.equals("Compra")){
+				if (msg3.equals(compra)){
 					
 					System.out.println("SERVER - COMPRA");
 					
@@ -256,7 +259,7 @@ public class Servidor{
 					envia3.writeObject(carta);
 					envia3.flush();
 					
-				}else if(msg3.equals("Devolucao")){
+				}else if(msg3.equals(devolucao)){
 					
 					System.out.println("SERVER - DEVOLUCAO");
 					
@@ -271,7 +274,7 @@ public class Servidor{
 					case 4: m4.colocar(carta); break;
 					}
 					
-				}else if(msg3.equals("VerificaVencedor")){
+				}else if(msg3.equals(verificaVencedor)){
 					
 					System.out.println("SERVER - VERIFICACAO");
 					
@@ -286,7 +289,7 @@ public class Servidor{
 					envia3.writeObject(venceu3);
 					envia3.flush();
 				
-			    }else if(msg3.equals("Cartas")){
+			    }else if(msg3.equals(cartas)){
 			    	
 			    	System.out.println("SERVER - DANDO AS rsCARTAS");
 			    	
@@ -306,7 +309,7 @@ public class Servidor{
 				}
 				//=============================QUATRO============================
 				//caso seja uma compra de carta
-				if (msg4.equals("Compra")){
+				if (msg4.equals(compra)){
 					
 					System.out.println("SERVER - COMPRA");
 					
@@ -325,7 +328,7 @@ public class Servidor{
 					envia4.writeObject(carta);
 					envia4.flush();
 					
-				}else if(msg4.equals("Devolucao")){
+				}else if(msg4.equals(devolucao)){
 					
 					System.out.println("SERVER - DEVOLUCAO");
 					
@@ -340,7 +343,7 @@ public class Servidor{
 					case 4: m4.colocar(carta); break;
 					}
 					
-				}else if(msg4.equals("VerificaVencedor")){
+				}else if(msg4.equals(verificaVencedor)){
 					
 					System.out.println("SERVER - VERIFICACAO");
 					
@@ -355,7 +358,7 @@ public class Servidor{
 					envia4.writeObject(venceu4);
 					envia4.flush();
 				
-			    }else if(msg4.equals("Cartas")){
+			    }else if(msg4.equals(cartas)){
 			    	
 			    	System.out.println("SERVER - DANDO AS CARTAS");
 			    	
