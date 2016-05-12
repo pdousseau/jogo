@@ -11,6 +11,7 @@ public class Jogador extends Thread {
 	ArrayList<Integer> cartas; //cartas do jogador
 	Integer dir, esq; //numero dos montes
 	String nome; //nome do jogador
+	String ip = "127.0.0.1";
 
 	public Jogador(Integer dir, Integer esq, String nome) {
 
@@ -28,31 +29,31 @@ public class Jogador extends Thread {
 		ObjectOutputStream envia;
 		
 		//criando um socket para a conexao com o servidor
-		conexao = new Socket(InetAddress.getByName("127.0.0.1"), 5001 );
+		conexao = new Socket(InetAddress.getByName(ip), 5001 );
 		
 		System.out.println(nome + "CONECTADO");
 		
 		//obtendo os fluxos de entrada e de saida
 		envia = new ObjectOutputStream(conexao.getOutputStream());
-	    recebe = new ObjectInputStream(conexao.getInputStream());
+	    	recebe = new ObjectInputStream(conexao.getInputStream());
 	    
-	    System.out.println(nome + " ganhando as cartas");
+	    	System.out.println(nome + " ganhando as cartas");
 	    
-	    //pede as cartas para o servidor
-	    envia.writeObject("Cartas");
-	    envia.flush();
-	    cartas = (ArrayList<Integer>)recebe.readObject();
+	    	//pede as cartas para o servidor
+	    	envia.writeObject("Cartas");
+	    	envia.flush();
+	    	cartas = (ArrayList<Integer>)recebe.readObject();
 	    
-	    //envia o pedido de verificacao com seu nome
-	    envia.writeObject("VerificaVencedor");
-	    envia.writeObject(cartas);
-	    envia.writeObject(nome);
-	    envia.flush();
+	    	//envia o pedido de verificacao com seu nome
+	    	envia.writeObject("VerificaVencedor");
+	    	envia.writeObject(cartas);
+	    	envia.writeObject(nome);
+	    	envia.flush();
 	    
-	    //recebe a resposta do servidor
-	    boolean venceu = (Boolean)recebe.readObject();
+	    	//recebe a resposta do servidor
+	    	boolean venceu = (Boolean)recebe.readObject();
 
-	    System.out.println("COMECANDO A JOGAR");
+	    	System.out.println("COMECANDO A JOGAR");
 	    
 		// enquanto nao houve vencedores
 		while (!venceu) {
@@ -72,16 +73,14 @@ public class Jogador extends Thread {
 			envia.writeObject("Devolucao");
 			envia.writeObject(carta);
 			envia.writeObject(dir);
-		    envia.flush();
+		    	envia.flush();
 
 			// retira uma carta do monte da esquerda
-		    envia.writeObject("Compra");
+		    	envia.writeObject("Compra");
 			envia.writeObject(esq);
-		    envia.flush();
-		    carta = (Integer)recebe.readObject();
+		    	envia.flush();
+		    	carta = (Integer)recebe.readObject();
 		    
-			//System.out.println(nome + " Comprou a carta " + carta);
-
 			// adiciona essa carta na sua mao
 			cartas.add(carta);
 
@@ -92,7 +91,6 @@ public class Jogador extends Thread {
 			envia.flush();
 
 			venceu = (Boolean)recebe.readObject();
-
 		}
 		
 		if (cartas.get(0) == cartas.get(1) && cartas.get(1) == cartas.get(2) && cartas.get(2) == cartas.get(3)){
